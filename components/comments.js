@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, FlatList, Button, TextInput } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, TextInput } from 'react-native'
 
 import firebase from 'firebase'
 require('firebase/firestore')
@@ -8,13 +8,13 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchUsersData } from '../redux/actions/index'
 
+
 function Comment(props) {
     const [comments, setComments] = useState([])
     const [postId, setPostId] = useState("")
     const [text, setText] = useState("")
 
     useEffect(() => {
-
         function matchUserToComment(comments) {
             for (let i = 0; i < comments.length; i++) {
                 if (comments[i].hasOwnProperty('user')) {
@@ -67,7 +67,7 @@ function Comment(props) {
     }
 
     return (
-        <View>
+        <View style={{justifyContent: 'center', alignItems: 'center' }}>
             <FlatList
                 numColumns={1}
                 horizontal={false}
@@ -84,14 +84,15 @@ function Comment(props) {
                 )}
             />
 
-            <View>
+            <View style={{marginTop: 20}}>
                 <TextInput
+                style={{borderBottomColor: 'green', borderBottomWidth: 1, padding: 10, marginBottom: 10}}
                     placeholder='comment...'
                     onChangeText={(text) => setText(text)} />
-                <Button
-                    onPress={() => onCommentSend()}
-                    title="Send"
-                />
+               
+                <TouchableOpacity style={{backgroundColor: '#cdff1f'}} onPress={() => onCommentSend()}>
+                    <Text style={{padding: 15}}>Comment</Text>
+                </TouchableOpacity>
             </View>
 
         </View>

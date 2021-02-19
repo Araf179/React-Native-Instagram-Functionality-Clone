@@ -25,7 +25,7 @@ class registerScreen extends Component {
         name,
         email,
       });
-    console.log(result);
+    alert(result.Error);
     console.log("Firestore result", fireStoreResult);
   };
 
@@ -37,25 +37,25 @@ class registerScreen extends Component {
           onChangeText={(name) => {
             this.setState({ name });
           }}
-          style={{padding: 20, borderWidth: 1, marginBottom: 10}}
+          style={{textAlign: 'center', width: 140, padding: 20, borderBottomWidth: 1, borderBottomColor: 'green', marginBottom: 10}}
         />
         <TextInput
-          placeholder="email"
+          placeholder="Email"
           onChangeText={(email) => {
             this.setState({ email });
           }}
-          style={{padding: 20, borderWidth: 1, marginBottom: 10}}
+          style={{textAlign: 'center', width: 140,padding: 20, borderBottomWidth: 1, borderBottomColor: 'green', marginBottom: 10}}
         />
         <TextInput
-          placeholder="password"
+          placeholder="Password"
           secureTextEntry={true}
           onChangeText={(password) => {
             this.setState({ password });
           }}
-          style={{padding: 20, marginBottom: 10, borderWidth: 1, marginBottom: 10}}
+          style={{textAlign: 'center', width: 140, padding: 20, marginBottom: 10, borderBottomWidth: 1, borderBottomColor: 'green', marginBottom: 10}}
         />
         <TouchableOpacity onPress={() => this.onSignUp()}>
-          <Text style={{borderWidth: 1, padding: 15, backgroundColor: '#eb3486', color: 'white'}}>Signup</Text>
+          <Text style={{ padding: 15, backgroundColor: '#cdff1f', color: 'black'}}>Signup</Text>
         </TouchableOpacity>
         
       </View>

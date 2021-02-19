@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, View, Text, Image, FlatList, Button, ScrollView } from 'react-native'
-
+import { StyleSheet, View, Text, Image, FlatList, TouchableOpacity, ScrollView, Button } from 'react-native'
+import { Dimensions } from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 import firebase from 'firebase'
 require('firebase/firestore')
 import { connect } from 'react-redux'
@@ -40,73 +41,39 @@ function feed(props) {
             .delete()
     }
  
-    return (
-        <View style={styles.container}>
+return (
+        <View style={{flex: 1, marginTop: 45}}>
             <Text>Feed: Display liked users and their image posts</Text>
-            <View style={styles.containerGallery}>
-                <FlatList
-                    numColumns={1}
-                    horizontal={false}
-                    data={posts}
-                    renderItem={({ item }) => (
-                        <View
-                            style={styles.containerImage}>
-                            <Text style={styles.container}>{item.user.name}</Text>
-                            <Image
-                                style={styles.image, {width: 200, height: 200}}
-                                source={{ uri: item.downloadURL }}
-                            />
-                            { item.currentUserLike ?
-                                (
-                                    <Button
-                                        title="Dislike"
-                                        onPress={() => onDislikePress(item.user.uid, item.id)} />
-                                )
-                                :
-                                (
-                                    <Button
-                                        title="Like"
-                                        onPress={() => onLikePress(item.user.uid, item.id)} />
-                                )
-                            }
-                            <Text
-                                style={{marginBottom: 10}}
-                                onPress={() => props.navigation.navigate('Comment', { postId: item.id, uid: item.user.uid })}>
-                                View Comments...
-                                </Text>
+            <View style={{flexDirection: 'row', flexWrap: 'wrap', flex: 1, marginTop: 20}}>
+            {posts.map( (item, index) => {
+                    return (
+                        <View style={{}}>
+                        <Text style={{textAlign: 'center'}}>{item.user.name}</Text>
+                        <Image
+                            style={{width: Dimensions.get('window').width/3, height: 100}}
+                            source={{ uri: item.downloadURL }}
+                        />
+                        <View style={{flexDirection: 'row'}}>
+                        {item.currentUserLike && <Icon name="heart" size={20} style={{marginRight: 5}} onPress={() => onDislikePress(item.user.uid, item.id)} />}
+                        {!item.currentUserLike && <Icon name="hearto" size={20} style={{marginRight: 5}} onPress={() => onLikePress(item.user.uid, item.id)} />}
+                        <Icon
+                            name="message1"
+                            size={20}
+                            style={{marginBottom: 10}}
+                            onPress={() => props.navigation.navigate('Comment', { postId: item.id, uid: item.user.uid })}
+                        />
                         </View>
+                    </View>
 
-                    )}
-
-                />
+                    )
+                })}
             </View>
         </View>
 
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: '10px'
-    },
-    containerInfo: {
-        margin: 20
-    },
-    containerGallery: {
-        flex: 1
-    },
-    containerImage: {
-        flex: 1 / 3
 
-    },
-    image: {
-        flex: 1,
-        aspectRatio: 1 / 1
-    }
-})
 const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser,
     following: store.userState.following,

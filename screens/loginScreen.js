@@ -23,22 +23,22 @@ class loginScreen extends Component {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <TextInput
-          placeholder="email"
+          placeholder="Email"
           onChangeText={(email) => {
             this.setState({ email });
           }}
-          style={{padding: 20, borderWidth: 1, marginBottom: 10}}
+          style={{textAlign: 'center', width: 120, padding: 20, borderBottomWidth: 1, borderBottomColor: 'green', marginBottom: 10}}
         />
         <TextInput
-          placeholder="password"
+          placeholder="Password"
           secureTextEntry={true}
           onChangeText={(password) => {
             this.setState({ password });
           }}
-          style={{padding: 20, borderWidth: 1, marginBottom: 10}}
+          style={{textAlign: 'center', width: 120,padding: 20, borderBottomWidth: 1, borderBottomColor: 'green', marginBottom: 10}}
         />
         <TouchableOpacity onPress={() => this.onLogin()}>
-          <Text style={{borderWidth: 1, padding: 15, backgroundColor: '#eb3486', color: 'white'}}>Login</Text>
+          <Text style={{ padding: 15, backgroundColor: '#cdff1f', color: 'black'}}>Login</Text>
         </TouchableOpacity>
        
       </View>

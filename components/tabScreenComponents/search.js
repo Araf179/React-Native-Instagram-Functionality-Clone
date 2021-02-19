@@ -33,9 +33,9 @@ const search = (props) => {
   }, []);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 30 }}>
       <TextInput
-        style={{padding: 20, borderWidth: 1, marginBottom: 10}}
+        style={{padding: 20, borderBottomWidth: 1, borderBottomColor: 'green', marginBottom: 10}}
         placeholder="Type Here..."
         onChangeText={(search) => fetchUsers(search)}
       />
@@ -50,7 +50,7 @@ const search = (props) => {
               props.navigation.navigate("Profile", { uid: item.id })
             }
           >
-            <Text style={{borderWidth: 1, padding: 15}}>{item.name}</Text>
+            <Text style={{borderBottomWidth: 1, borderBottomColor: 'green', padding: 15}}>{item.name}</Text>
           </TouchableOpacity>
         )}
       />
