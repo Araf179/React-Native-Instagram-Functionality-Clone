@@ -17,14 +17,16 @@ import Save from "./components/save";
 import Comments from "./components/comments";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDhZEG8i1iRv08MWx6xPI5XJy4QHRBuuz8",
-  authDomain: "react-native-social-demo.firebaseapp.com",
-  projectId: "react-native-social-demo",
-  storageBucket: "react-native-social-demo.appspot.com",
-  messagingSenderId: "1049309602723",
-  appId: "1:1049309602723:web:fd419f272a58af62d1b016",
-  measurementId: "G-3GER6338JC",
+  apiKey: "AIzaSyAJFsbFigj1LCtg3qwsBl-Ul8iE0NLoHpU",
+  authDomain: "backendservice-ab685.firebaseapp.com",
+  databaseURL: "https://backendservice-ab685.firebaseio.com",
+  projectId: "backendservice-ab685",
+  storageBucket: "backendservice-ab685.appspot.com",
+  messagingSenderId: "806890630702",
+  appId: "1:806890630702:web:3f81a52fdab4be562379bf",
+  measurementId: "G-EPM2DG96MZ"
 };
+
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
